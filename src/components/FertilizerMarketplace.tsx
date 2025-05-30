@@ -8,19 +8,22 @@ import { Separator } from '@/components/ui/separator';
 import { Recommendation } from '@/pages/Index';
 import { ShoppingCart, Plus, Minus, Star, Truck, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Language, getTranslation } from '@/utils/translations';
 
 interface FertilizerMarketplaceProps {
   recommendations: Recommendation | null;
   cartItems: Array<{id: string, name: string, price: number, quantity: number}>;
   onAddToCart: (item: {id: string, name: string, price: number}) => void;
   onUpdateQuantity: (id: string, quantity: number) => void;
+  language: Language;
 }
 
 const FertilizerMarketplace = ({ 
   recommendations, 
   cartItems, 
   onAddToCart, 
-  onUpdateQuantity 
+  onUpdateQuantity,
+  language 
 }: FertilizerMarketplaceProps) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const { toast } = useToast();
@@ -32,14 +35,14 @@ const FertilizerMarketplace = ({
       id: fert.name.toLowerCase().replace(/\s+/g, '-'),
       name: fert.name,
       price: fert.cost,
-      unit: 'per bag (50kg)',
+      unit: getTranslation('perBag', language),
       rating: 4.5,
       reviews: 128,
       category: 'fertilizer',
       isRecommended: true,
       effectiveness: fert.effectiveness,
       description: `High-quality ${fert.name.toLowerCase()} perfect for your soil conditions.`,
-      features: ['Slow Release', 'Weather Resistant', 'Organic Certified'],
+      features: [getTranslation('slowRelease', language), getTranslation('weatherResistant', language), getTranslation('organicCertified', language)],
       inStock: true,
       fastShipping: true,
     })) || []),
@@ -49,14 +52,14 @@ const FertilizerMarketplace = ({
       id: 'premium-compost',
       name: 'Premium Organic Compost',
       price: 180,
-      unit: 'per cubic yard',
+      unit: getTranslation('perCubicYard', language),
       rating: 4.8,
       reviews: 89,
       category: 'organic',
       isRecommended: false,
       effectiveness: 95,
       description: 'Rich, aged compost that improves soil structure and fertility.',
-      features: ['100% Organic', 'Aged 12 Months', 'Pathogen Free'],
+      features: [getTranslation('hundredPercent', language), getTranslation('aged12Months', language), getTranslation('pathogenFree', language)],
       inStock: true,
       fastShipping: false,
     },
@@ -64,14 +67,14 @@ const FertilizerMarketplace = ({
       id: 'soil-ph-tester',
       name: 'Digital Soil pH Tester',
       price: 35,
-      unit: 'per device',
+      unit: getTranslation('perDevice', language),
       rating: 4.3,
       reviews: 234,
       category: 'equipment',
       isRecommended: false,
       effectiveness: null,
       description: 'Accurate digital pH meter for soil testing.',
-      features: ['Digital Display', 'Waterproof', '2 Year Warranty'],
+      features: [getTranslation('digitalDisplay', language), getTranslation('waterproof', language), getTranslation('twoYearWarranty', language)],
       inStock: true,
       fastShipping: true,
     },
@@ -79,24 +82,24 @@ const FertilizerMarketplace = ({
       id: 'drip-irrigation-kit',
       name: 'Drip Irrigation Starter Kit',
       price: 125,
-      unit: 'per kit (covers 100 sq ft)',
+      unit: getTranslation('perKit', language),
       rating: 4.6,
       reviews: 156,
       category: 'equipment',
       isRecommended: false,
       effectiveness: null,
       description: 'Complete drip irrigation system for efficient water usage.',
-      features: ['Easy Install', 'Timer Included', 'Adjustable Flow'],
+      features: [getTranslation('easyInstall', language), getTranslation('timerIncluded', language), getTranslation('adjustableFlow', language)],
       inStock: true,
       fastShipping: true,
     },
   ];
 
   const categories = [
-    { id: 'all', name: 'All Products' },
-    { id: 'fertilizer', name: 'Fertilizers' },
-    { id: 'organic', name: 'Organic' },
-    { id: 'equipment', name: 'Equipment' },
+    { id: 'all', name: getTranslation('allProducts', language) },
+    { id: 'fertilizer', name: getTranslation('fertilizers', language) },
+    { id: 'organic', name: getTranslation('organic', language) },
+    { id: 'equipment', name: getTranslation('equipment', language) },
   ];
 
   const filteredProducts = selectedCategory === 'all' 
@@ -118,8 +121,8 @@ const FertilizerMarketplace = ({
       price: product.price,
     });
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: getTranslation('addedToCart', language),
+      description: `${product.name} ${getTranslation('addedToCartDesc', language)}`,
     });
   };
 
@@ -127,8 +130,8 @@ const FertilizerMarketplace = ({
     if (cartItems.length === 0) return;
     
     toast({
-      title: "Order Placed!",
-      description: `Your order of ${cartQuantity} items totaling $${cartTotal.toFixed(2)} has been placed. Expected delivery: 3-5 business days.`,
+      title: getTranslation('orderPlaced', language),
+      description: `${getTranslation('total', language)}: ${cartQuantity} ${getTranslation('items', language)} ₹${cartTotal.toFixed(2)} ${getTranslation('orderPlacedDesc', language)}`,
     });
     
     // Clear cart after successful order
@@ -140,20 +143,20 @@ const FertilizerMarketplace = ({
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">Fertilizer Marketplace</h2>
-          <p className="text-gray-600">Get the best products for your farm delivered to your door</p>
+          <h2 className="text-2xl font-bold text-gray-800">{getTranslation('fertilizerMarketplace', language)}</h2>
+          <p className="text-gray-600">{getTranslation('marketplaceDesc', language)}</p>
         </div>
         
         {cartItems.length > 0 && (
           <Card className="md:w-80">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-medium">Cart ({cartQuantity} items)</span>
-                <span className="font-bold text-green-600">${cartTotal.toFixed(2)}</span>
+                <span className="font-medium">{getTranslation('cart', language)} ({cartQuantity} {getTranslation('items', language)})</span>
+                <span className="font-bold text-green-600">₹{cartTotal.toFixed(2)}</span>
               </div>
               <Button onClick={handleCheckout} className="w-full bg-green-600 hover:bg-green-700">
                 <ShoppingCart className="h-4 w-4 mr-2" />
-                Checkout Now
+                {getTranslation('checkoutNow', language)}
               </Button>
             </CardContent>
           </Card>
@@ -183,7 +186,7 @@ const FertilizerMarketplace = ({
             <Card key={product.id} className={`relative ${product.isRecommended ? 'ring-2 ring-green-500' : ''}`}>
               {product.isRecommended && (
                 <Badge className="absolute -top-2 -right-2 bg-green-600 text-white">
-                  Recommended
+                  {getTranslation('recommended', language)}
                 </Badge>
               )}
               
@@ -201,7 +204,7 @@ const FertilizerMarketplace = ({
               <CardContent className="space-y-4">
                 {/* Features */}
                 <div className="flex flex-wrap gap-1">
-                  {product.features.map(feature => (
+                  {product.features.map((feature: string) => (
                     <Badge key={feature} variant="secondary" className="text-xs">
                       {feature}
                     </Badge>
@@ -211,7 +214,7 @@ const FertilizerMarketplace = ({
                 {/* Effectiveness (for fertilizers) */}
                 {product.effectiveness && (
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Effectiveness:</span>
+                    <span className="text-gray-600">{getTranslation('effectiveness', language)}:</span>
                     <span className="font-medium text-green-600">{product.effectiveness}%</span>
                   </div>
                 )}
@@ -221,13 +224,13 @@ const FertilizerMarketplace = ({
                   {product.fastShipping && (
                     <div className="flex items-center gap-1">
                       <Truck className="h-3 w-3" />
-                      <span>Fast Ship</span>
+                      <span>{getTranslation('fastShip', language)}</span>
                     </div>
                   )}
                   {product.inStock && (
                     <div className="flex items-center gap-1">
                       <Shield className="h-3 w-3" />
-                      <span>In Stock</span>
+                      <span>{getTranslation('inStock', language)}</span>
                     </div>
                   )}
                 </div>
@@ -238,10 +241,10 @@ const FertilizerMarketplace = ({
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <div>
-                      <span className="text-2xl font-bold text-green-600">${product.price}</span>
+                      <span className="text-2xl font-bold text-green-600">₹{product.price}</span>
                       <span className="text-sm text-gray-600 ml-1">{product.unit}</span>
                     </div>
-                    <span className="text-sm text-gray-500">({product.reviews} reviews)</span>
+                    <span className="text-sm text-gray-500">({product.reviews} {getTranslation('reviews', language)})</span>
                   </div>
 
                   {cartQuantity === 0 ? (
@@ -251,7 +254,7 @@ const FertilizerMarketplace = ({
                       disabled={!product.inStock}
                     >
                       <Plus className="h-4 w-4 mr-2" />
-                      Add to Cart
+                      {getTranslation('addToCart', language)}
                     </Button>
                   ) : (
                     <div className="flex items-center gap-2">
@@ -277,7 +280,7 @@ const FertilizerMarketplace = ({
                         <Plus className="h-3 w-3" />
                       </Button>
                       <span className="text-sm text-gray-600 ml-2">
-                        ${(product.price * cartQuantity).toFixed(2)}
+                        ₹{(product.price * cartQuantity).toFixed(2)}
                       </span>
                     </div>
                   )}
@@ -294,12 +297,12 @@ const FertilizerMarketplace = ({
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Shopping Cart</p>
-                <p className="text-sm text-gray-600">{cartQuantity} items • Total: ${cartTotal.toFixed(2)}</p>
+                <p className="font-medium">{getTranslation('shoppingCart', language)}</p>
+                <p className="text-sm text-gray-600">{cartQuantity} {getTranslation('items', language)} • {getTranslation('total', language)}: ₹{cartTotal.toFixed(2)}</p>
               </div>
               <Button onClick={handleCheckout} className="bg-green-600 hover:bg-green-700">
                 <ShoppingCart className="h-4 w-4 mr-2" />
-                Checkout
+                {getTranslation('checkout', language)}
               </Button>
             </div>
           </CardContent>

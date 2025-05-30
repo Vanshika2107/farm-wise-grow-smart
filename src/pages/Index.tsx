@@ -156,6 +156,7 @@ const Index = () => {
                 <RecommendationDashboard 
                   recommendations={recommendations} 
                   farmData={farmData}
+                  language={language}
                 />
               )}
             </TabsContent>
@@ -166,6 +167,7 @@ const Index = () => {
                 cartItems={cartItems}
                 onAddToCart={addToCart}
                 onUpdateQuantity={updateCartQuantity}
+                language={language}
               />
             </TabsContent>
 

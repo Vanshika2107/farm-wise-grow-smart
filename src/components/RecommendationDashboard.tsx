@@ -5,13 +5,15 @@ import { Progress } from '@/components/ui/progress';
 import { FarmData, Recommendation } from '@/pages/Index';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, DollarSign, Leaf, Award } from 'lucide-react';
+import { Language, getTranslation } from '@/utils/translations';
 
 interface RecommendationDashboardProps {
   recommendations: Recommendation;
   farmData: FarmData;
+  language: Language;
 }
 
-const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDashboardProps) => {
+const RecommendationDashboard = ({ recommendations, farmData, language }: RecommendationDashboardProps) => {
   const cropData = recommendations.crops.map(crop => ({
     name: crop.name,
     yield: crop.yield,
@@ -35,33 +37,42 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
     }
   };
 
+  const getDifficultyTranslation = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Easy': return getTranslation('easy', language);
+      case 'Medium': return getTranslation('medium', language);
+      case 'Hard': return getTranslation('hard', language);
+      default: return difficulty;
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Farm Summary */}
       <Card className="bg-gradient-to-r from-green-500 to-blue-500 text-white">
         <CardHeader>
-          <CardTitle className="text-2xl">Farm Analysis Summary</CardTitle>
+          <CardTitle className="text-2xl">{getTranslation('farmAnalysisSummary', language)}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
             <div>
-              <p className="text-green-100">Soil Type</p>
+              <p className="text-green-100">{getTranslation('soilType', language)}</p>
               <p className="font-bold text-lg">{farmData.soilType}</p>
             </div>
             <div>
-              <p className="text-green-100">Previous Crop</p>
+              <p className="text-green-100">{getTranslation('previousCrop', language)}</p>
               <p className="font-bold text-lg">{farmData.previousCrop}</p>
             </div>
             <div>
-              <p className="text-green-100">Budget</p>
+              <p className="text-green-100">{getTranslation('budget', language)}</p>
               <p className="font-bold text-lg">₹{farmData.budget.toLocaleString('en-IN')}</p>
             </div>
             <div>
-              <p className="text-green-100">State</p>
+              <p className="text-green-100">{getTranslation('state', language)}</p>
               <p className="font-bold text-lg">{farmData.location}</p>
             </div>
             <div>
-              <p className="text-green-100">Season</p>
+              <p className="text-green-100">{getTranslation('growingSeason', language)}</p>
               <p className="font-bold text-lg">{farmData.season}</p>
             </div>
           </div>
@@ -74,7 +85,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Investment</p>
+                <p className="text-sm text-gray-600">{getTranslation('totalInvestment', language)}</p>
                 <p className="text-2xl font-bold text-green-600">₹{recommendations.totalCost.toLocaleString('en-IN')}</p>
               </div>
               <DollarSign className="h-8 w-8 text-green-500" />
@@ -86,7 +97,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Projected Revenue</p>
+                <p className="text-sm text-gray-600">{getTranslation('projectedRevenue', language)}</p>
                 <p className="text-2xl font-bold text-blue-600">₹{recommendations.projectedRevenue.toLocaleString('en-IN')}</p>
               </div>
               <TrendingUp className="h-8 w-8 text-blue-500" />
@@ -98,7 +109,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Expected Profit</p>
+                <p className="text-sm text-gray-600">{getTranslation('expectedProfit', language)}</p>
                 <p className="text-2xl font-bold text-emerald-600">₹{(recommendations.projectedRevenue - recommendations.totalCost).toLocaleString('en-IN')}</p>
               </div>
               <Award className="h-8 w-8 text-emerald-500" />
@@ -110,7 +121,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Sustainability Score</p>
+                <p className="text-sm text-gray-600">{getTranslation('sustainabilityScore', language)}</p>
                 <p className="text-2xl font-bold text-green-600">{recommendations.sustainabilityScore}/100</p>
               </div>
               <Leaf className="h-8 w-8 text-green-500" />
@@ -124,7 +135,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5 text-green-600" />
-            Recommended Crops
+            {getTranslation('recommendedCrops', language)}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -135,21 +146,21 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-bold text-lg">{crop.name}</h3>
                     <Badge className={getDifficultyColor(crop.difficulty)}>
-                      {crop.difficulty}
+                      {getDifficultyTranslation(crop.difficulty)}
                     </Badge>
                   </div>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Expected Yield</span>
-                      <span className="font-medium">{crop.yield} tons/acre</span>
+                      <span className="text-sm text-gray-600">{getTranslation('expectedYield', language)}</span>
+                      <span className="font-medium">{crop.yield} {getTranslation('tons', language)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Profit Potential</span>
+                      <span className="text-sm text-gray-600">{getTranslation('profitPotential', language)}</span>
                       <span className="font-medium text-green-600">₹{crop.profit.toLocaleString('en-IN')}</span>
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Sustainability</span>
+                        <span className="text-sm text-gray-600">{getTranslation('sustainability', language)}</span>
                         <span className="font-medium">{crop.sustainability}%</span>
                       </div>
                       <Progress value={crop.sustainability} className="h-2" />
@@ -161,13 +172,13 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
           </div>
 
           <div className="h-64">
-            <h4 className="font-medium mb-4">Crop Comparison - Profit Potential</h4>
+            <h4 className="font-medium mb-4">{getTranslation('cropComparison', language)}</h4>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={cropData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip formatter={(value, name) => [`₹${Number(value).toLocaleString('en-IN')}`, name === 'profit' ? 'Profit' : 'Yield']} />
+                <Tooltip formatter={(value, name) => [`₹${Number(value).toLocaleString('en-IN')}`, name === 'profit' ? getTranslation('profitPotential', language) : getTranslation('expectedYield', language)]} />
                 <Bar dataKey="profit" fill="#10B981" />
               </BarChart>
             </ResponsiveContainer>
@@ -180,7 +191,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Leaf className="h-5 w-5 text-green-600" />
-            Recommended Fertilizers
+            {getTranslation('recommendedFertilizers', language)}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -191,16 +202,16 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
                   <h3 className="font-bold text-lg mb-2">{fertilizer.name}</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Amount Needed</span>
+                      <span className="text-sm text-gray-600">{getTranslation('amountNeeded', language)}</span>
                       <span className="font-medium">{fertilizer.amount}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Cost</span>
+                      <span className="text-sm text-gray-600">{getTranslation('cost', language)}</span>
                       <span className="font-medium text-green-600">₹{fertilizer.cost.toLocaleString('en-IN')}</span>
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Effectiveness</span>
+                        <span className="text-sm text-gray-600">{getTranslation('effectiveness', language)}</span>
                         <span className="font-medium">{fertilizer.effectiveness}%</span>
                       </div>
                       <Progress value={fertilizer.effectiveness} className="h-2" />
@@ -212,7 +223,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
           </div>
 
           <div className="h-64">
-            <h4 className="font-medium mb-4">Fertilizer Effectiveness vs Cost</h4>
+            <h4 className="font-medium mb-4">{getTranslation('fertilizerEffectiveness', language)}</h4>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
