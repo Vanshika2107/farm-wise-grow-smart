@@ -47,20 +47,20 @@ const Index = () => {
     // Simulate ML processing
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // Generate recommendations based on input
+    // Generate recommendations based on input - updated for Indian context
     const mockRecommendations: Recommendation = {
       crops: [
-        { name: 'Tomatoes', yield: 25, profit: 3500, sustainability: 85, difficulty: 'Medium' },
-        { name: 'Corn', yield: 180, profit: 2800, sustainability: 70, difficulty: 'Easy' },
-        { name: 'Bell Peppers', yield: 15, profit: 4200, sustainability: 80, difficulty: 'Hard' },
+        { name: 'Rice', yield: 25, profit: 280000, sustainability: 85, difficulty: 'Medium' },
+        { name: 'Wheat', yield: 35, profit: 220000, sustainability: 80, difficulty: 'Easy' },
+        { name: 'Sugarcane', yield: 60, profit: 350000, sustainability: 70, difficulty: 'Hard' },
       ],
       fertilizers: [
-        { name: 'Organic Compost', amount: '500kg', cost: 150, effectiveness: 90 },
-        { name: 'NPK 10-10-10', amount: '200kg', cost: 80, effectiveness: 85 },
-        { name: 'Calcium Sulfate', amount: '100kg', cost: 45, effectiveness: 75 },
+        { name: 'Organic Compost', amount: '500kg', cost: 12000, effectiveness: 90 },
+        { name: 'NPK 10-10-10', amount: '200kg', cost: 6500, effectiveness: 85 },
+        { name: 'Urea', amount: '150kg', cost: 4500, effectiveness: 80 },
       ],
-      totalCost: 275,
-      projectedRevenue: 4200,
+      totalCost: 23000,
+      projectedRevenue: 350000,
       sustainabilityScore: 82,
     };
     

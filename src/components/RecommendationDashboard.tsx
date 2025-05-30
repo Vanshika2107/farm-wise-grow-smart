@@ -54,10 +54,10 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
             </div>
             <div>
               <p className="text-green-100">Budget</p>
-              <p className="font-bold text-lg">${farmData.budget}</p>
+              <p className="font-bold text-lg">₹{farmData.budget.toLocaleString('en-IN')}</p>
             </div>
             <div>
-              <p className="text-green-100">Location</p>
+              <p className="text-green-100">State</p>
               <p className="font-bold text-lg">{farmData.location}</p>
             </div>
             <div>
@@ -75,7 +75,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Total Investment</p>
-                <p className="text-2xl font-bold text-green-600">${recommendations.totalCost}</p>
+                <p className="text-2xl font-bold text-green-600">₹{recommendations.totalCost.toLocaleString('en-IN')}</p>
               </div>
               <DollarSign className="h-8 w-8 text-green-500" />
             </div>
@@ -87,7 +87,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Projected Revenue</p>
-                <p className="text-2xl font-bold text-blue-600">${recommendations.projectedRevenue}</p>
+                <p className="text-2xl font-bold text-blue-600">₹{recommendations.projectedRevenue.toLocaleString('en-IN')}</p>
               </div>
               <TrendingUp className="h-8 w-8 text-blue-500" />
             </div>
@@ -99,7 +99,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Expected Profit</p>
-                <p className="text-2xl font-bold text-emerald-600">${recommendations.projectedRevenue - recommendations.totalCost}</p>
+                <p className="text-2xl font-bold text-emerald-600">₹{(recommendations.projectedRevenue - recommendations.totalCost).toLocaleString('en-IN')}</p>
               </div>
               <Award className="h-8 w-8 text-emerald-500" />
             </div>
@@ -145,7 +145,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
                     </div>
                     <div className="flex justify-between">
                       <span className="text-sm text-gray-600">Profit Potential</span>
-                      <span className="font-medium text-green-600">${crop.profit}</span>
+                      <span className="font-medium text-green-600">₹{crop.profit.toLocaleString('en-IN')}</span>
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between">
@@ -167,7 +167,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip formatter={(value, name) => [`$${value}`, name === 'profit' ? 'Profit' : 'Yield']} />
+                <Tooltip formatter={(value, name) => [`₹${Number(value).toLocaleString('en-IN')}`, name === 'profit' ? 'Profit' : 'Yield']} />
                 <Bar dataKey="profit" fill="#10B981" />
               </BarChart>
             </ResponsiveContainer>
@@ -196,7 +196,7 @@ const RecommendationDashboard = ({ recommendations, farmData }: RecommendationDa
                     </div>
                     <div className="flex justify-between">
                       <span className="text-sm text-gray-600">Cost</span>
-                      <span className="font-medium text-green-600">${fertilizer.cost}</span>
+                      <span className="font-medium text-green-600">₹{fertilizer.cost.toLocaleString('en-IN')}</span>
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between">

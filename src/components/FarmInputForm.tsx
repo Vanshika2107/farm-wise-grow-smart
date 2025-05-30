@@ -29,9 +29,28 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
     }
   };
 
-  const soilTypes = ['Clay', 'Sandy', 'Loamy', 'Silty', 'Peaty', 'Chalky'];
-  const cropTypes = ['Corn', 'Wheat', 'Rice', 'Soybeans', 'Tomatoes', 'Potatoes', 'None (First Time)'];
-  const seasons = ['Spring', 'Summer', 'Fall', 'Winter'];
+  const soilTypes = ['Clay', 'Sandy', 'Loamy', 'Silty', 'Peaty', 'Chalky', 'Black Cotton', 'Red Soil', 'Laterite'];
+  
+  const cropTypes = [
+    'Rice', 'Wheat', 'Corn', 'Sugarcane', 'Cotton', 'Soybeans', 'Groundnut', 'Sunflower',
+    'Mustard', 'Barley', 'Jowar', 'Bajra', 'Ragi', 'Tomatoes', 'Potatoes', 'Onions',
+    'Garlic', 'Chili', 'Turmeric', 'Ginger', 'Cardamom', 'Black Pepper', 'Tea', 'Coffee',
+    'Coconut', 'Areca Nut', 'Cashew', 'Mango', 'Banana', 'Pomegranate', 'Grapes',
+    'Orange', 'Apple', 'Guava', 'Papaya', 'Jackfruit', 'Pulses', 'Chickpea', 'Lentils',
+    'Black Gram', 'Green Gram', 'Pigeon Pea', 'None (First Time)'
+  ];
+  
+  const seasons = ['Spring', 'Summer', 'Monsoon (Kharif)', 'Post-Monsoon (Rabi)', 'Winter', 'Rainy Season'];
+  
+  const indianStates = [
+    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 
+    'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 
+    'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 
+    'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 
+    'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Delhi', 'Jammu and Kashmir', 
+    'Ladakh', 'Puducherry', 'Chandigarh', 'Andaman and Nicobar Islands', 
+    'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep'
+  ];
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -56,7 +75,7 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
             <SelectTrigger className="h-12">
               <SelectValue placeholder="What did you grow last?" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-60">
               {cropTypes.map(crop => (
                 <SelectItem key={crop} value={crop}>{crop}</SelectItem>
               ))}
@@ -65,11 +84,11 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="budget" className="text-base font-medium">Budget for Inputs ($)</Label>
+          <Label htmlFor="budget" className="text-base font-medium">Budget for Inputs (₹)</Label>
           <Input
             id="budget"
             type="number"
-            placeholder="e.g. 500"
+            placeholder="e.g. 50000"
             className="h-12 text-base"
             value={formData.budget || ''}
             onChange={(e) => setFormData({...formData, budget: parseInt(e.target.value) || 0})}
@@ -77,15 +96,17 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="location" className="text-base font-medium">Location (City, State)</Label>
-          <Input
-            id="location"
-            type="text"
-            placeholder="e.g. Des Moines, Iowa"
-            className="h-12 text-base"
-            value={formData.location}
-            onChange={(e) => setFormData({...formData, location: e.target.value})}
-          />
+          <Label htmlFor="location" className="text-base font-medium">State</Label>
+          <Select value={formData.location} onValueChange={(value) => setFormData({...formData, location: value})}>
+            <SelectTrigger className="h-12">
+              <SelectValue placeholder="Select your state" />
+            </SelectTrigger>
+            <SelectContent className="max-h-60">
+              {indianStates.map(state => (
+                <SelectItem key={state} value={state}>{state}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="space-y-2 md:col-span-2">
