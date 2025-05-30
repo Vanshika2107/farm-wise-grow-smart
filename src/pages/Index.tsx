@@ -4,10 +4,11 @@ import FarmInputForm from '@/components/FarmInputForm';
 import RecommendationDashboard from '@/components/RecommendationDashboard';
 import FertilizerMarketplace from '@/components/FertilizerMarketplace';
 import LanguageSelector from '@/components/LanguageSelector';
+import LanguageSettings from '@/components/LanguageSettings';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Sprout, ShoppingCart, BarChart3 } from 'lucide-react';
-import { Language, getTranslation } from '@/utils/translations';
+import { Sprout, ShoppingCart, BarChart3, Globe } from 'lucide-react';
+import { Language, getTranslation, getCropName, getFertilizerName } from '@/utils/translations';
 
 export interface FarmData {
   soilType: string;
@@ -45,6 +46,10 @@ const Index = () => {
 
   const handleLanguageSelect = (selectedLanguage: Language) => {
     setLanguage(selectedLanguage);
+  };
+
+  const handleLanguageChange = (newLanguage: Language) => {
+    setLanguage(newLanguage);
   };
 
   const handleFormSubmit = async (data: FarmData) => {
@@ -136,7 +141,7 @@ const Index = () => {
           </div>
         ) : (
           <Tabs defaultValue="recommendations" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
+            <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto">
               <TabsTrigger value="recommendations" className="flex items-center gap-2">
                 <BarChart3 className="h-4 w-4" />
                 {getTranslation('analysis', language)}
@@ -148,6 +153,10 @@ const Index = () => {
               <TabsTrigger value="new-analysis" className="flex items-center gap-2">
                 <Sprout className="h-4 w-4" />
                 {getTranslation('newAnalysis', language)}
+              </TabsTrigger>
+              <TabsTrigger value="language" className="flex items-center gap-2">
+                <Globe className="h-4 w-4" />
+                {getTranslation('language', language)}
               </TabsTrigger>
             </TabsList>
 
@@ -185,6 +194,13 @@ const Index = () => {
                   <FarmInputForm onSubmit={handleFormSubmit} isLoading={isLoading} language={language} />
                 </Card>
               </div>
+            </TabsContent>
+
+            <TabsContent value="language">
+              <LanguageSettings 
+                currentLanguage={language}
+                onLanguageChange={handleLanguageChange}
+              />
             </TabsContent>
           </Tabs>
         )}

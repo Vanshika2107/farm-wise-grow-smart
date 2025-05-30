@@ -1,11 +1,10 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { FarmData, Recommendation } from '@/pages/Index';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, DollarSign, Leaf, Award } from 'lucide-react';
-import { Language, getTranslation } from '@/utils/translations';
+import { Language, getTranslation, getCropName, getFertilizerName } from '@/utils/translations';
 
 interface RecommendationDashboardProps {
   recommendations: Recommendation;
@@ -15,13 +14,13 @@ interface RecommendationDashboardProps {
 
 const RecommendationDashboard = ({ recommendations, farmData, language }: RecommendationDashboardProps) => {
   const cropData = recommendations.crops.map(crop => ({
-    name: crop.name,
+    name: getCropName(crop.name, language),
     yield: crop.yield,
     profit: crop.profit,
   }));
 
   const fertilizerData = recommendations.fertilizers.map(fert => ({
-    name: fert.name,
+    name: getFertilizerName(fert.name, language),
     effectiveness: fert.effectiveness,
     cost: fert.cost,
   }));
@@ -144,7 +143,7 @@ const RecommendationDashboard = ({ recommendations, farmData, language }: Recomm
               <Card key={crop.name} className="relative overflow-hidden">
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-lg">{crop.name}</h3>
+                    <h3 className="font-bold text-lg">{getCropName(crop.name, language)}</h3>
                     <Badge className={getDifficultyColor(crop.difficulty)}>
                       {getDifficultyTranslation(crop.difficulty)}
                     </Badge>
@@ -199,7 +198,7 @@ const RecommendationDashboard = ({ recommendations, farmData, language }: Recomm
             {recommendations.fertilizers.map((fertilizer) => (
               <Card key={fertilizer.name}>
                 <CardContent className="p-4">
-                  <h3 className="font-bold text-lg mb-2">{fertilizer.name}</h3>
+                  <h3 className="font-bold text-lg mb-2">{getFertilizerName(fertilizer.name, language)}</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="text-sm text-gray-600">{getTranslation('amountNeeded', language)}</span>

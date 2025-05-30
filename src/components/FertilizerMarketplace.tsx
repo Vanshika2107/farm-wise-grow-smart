@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,7 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { Recommendation } from '@/pages/Index';
 import { ShoppingCart, Plus, Minus, Star, Truck, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Language, getTranslation } from '@/utils/translations';
+import { Language, getTranslation, getFertilizerName, getProductName } from '@/utils/translations';
 
 interface FertilizerMarketplaceProps {
   recommendations: Recommendation | null;
@@ -33,7 +32,8 @@ const FertilizerMarketplace = ({
     // Recommended products from analysis
     ...(recommendations?.fertilizers.map(fert => ({
       id: fert.name.toLowerCase().replace(/\s+/g, '-'),
-      name: fert.name,
+      name: getFertilizerName(fert.name, language),
+      originalName: fert.name,
       price: fert.cost,
       unit: getTranslation('perBag', language),
       rating: 4.5,
@@ -50,7 +50,8 @@ const FertilizerMarketplace = ({
     // Additional products
     {
       id: 'premium-compost',
-      name: 'Premium Organic Compost',
+      name: getTranslation('premiumOrganicCompost', language),
+      originalName: 'Premium Organic Compost',
       price: 180,
       unit: getTranslation('perCubicYard', language),
       rating: 4.8,
@@ -65,7 +66,8 @@ const FertilizerMarketplace = ({
     },
     {
       id: 'soil-ph-tester',
-      name: 'Digital Soil pH Tester',
+      name: getTranslation('digitalSoilPhTester', language),
+      originalName: 'Digital Soil pH Tester',
       price: 35,
       unit: getTranslation('perDevice', language),
       rating: 4.3,
@@ -80,7 +82,8 @@ const FertilizerMarketplace = ({
     },
     {
       id: 'drip-irrigation-kit',
-      name: 'Drip Irrigation Starter Kit',
+      name: getTranslation('dripIrrigationStarterKit', language),
+      originalName: 'Drip Irrigation Starter Kit',
       price: 125,
       unit: getTranslation('perKit', language),
       rating: 4.6,

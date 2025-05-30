@@ -36,6 +36,7 @@ export const translations = {
     analysis: 'Analysis',
     shop: 'Shop',
     newAnalysis: 'New Analysis',
+    language: 'Language',
     newFarmAnalysis: 'New Farm Analysis',
     startFresh: 'Start a fresh analysis with new parameters',
     
@@ -56,6 +57,21 @@ export const translations = {
     effectiveness: 'Effectiveness',
     fertilizerEffectiveness: 'Fertilizer Effectiveness vs Cost',
     tons: 'tons/acre',
+    
+    // Crops
+    rice: 'Rice',
+    wheat: 'Wheat',
+    sugarcane: 'Sugarcane',
+    
+    // Fertilizers
+    organicCompost: 'Organic Compost',
+    npk: 'NPK 10-10-10',
+    urea: 'Urea',
+    premiumOrganicCompost: 'Premium Organic Compost',
+    
+    // Products
+    digitalSoilPhTester: 'Digital Soil pH Tester',
+    dripIrrigationStarterKit: 'Drip Irrigation Starter Kit',
     
     // Fertilizer Marketplace
     fertilizerMarketplace: 'Fertilizer Marketplace',
@@ -83,6 +99,13 @@ export const translations = {
     perCubicYard: 'per cubic yard',
     perDevice: 'per device',
     perKit: 'per kit (covers 100 sq ft)',
+    
+    // Language Settings
+    languageSettings: 'Language Settings',
+    languageSettingsDesc: 'Change your preferred language',
+    saveLanguage: 'Save Language',
+    languageUpdated: 'Language Updated',
+    languageUpdatedDesc: 'Your language preference has been saved.',
     
     // Difficulty levels
     easy: 'Easy',
@@ -137,6 +160,7 @@ export const translations = {
     analysis: 'విశ్లేషణ',
     shop: 'షాప్',
     newAnalysis: 'కొత్త విశ్లేషణ',
+    language: 'భాష',
     newFarmAnalysis: 'కొత్త వ్యవసాయ విశ్లేషణ',
     startFresh: 'కొత్త పారామితులతో కొత్త విశ్లేషణ ప్రారంభించండి',
     
@@ -157,6 +181,21 @@ export const translations = {
     effectiveness: 'ప్రభావకారిత',
     fertilizerEffectiveness: 'ఎరువుల ప్రభావకారిత వస్ ఖర్చు',
     tons: 'టన్నులు/ఎకరం',
+    
+    // Crops
+    rice: 'వరి',
+    wheat: 'గోధుమలు',
+    sugarcane: 'చెరకు',
+    
+    // Fertilizers
+    organicCompost: 'సేంద్రీయ కంపోస్ట్',
+    npk: 'NPK 10-10-10',
+    urea: 'యూరియా',
+    premiumOrganicCompost: 'ప్రీమియం సేంద్రీయ కంపోస్ట్',
+    
+    // Products
+    digitalSoilPhTester: 'డిజిటల్ మట్టి pH టెస్టర్',
+    dripIrrigationStarterKit: 'డ్రిప్ ఇరిగేషన్ స్టార్టర్ కిట్',
     
     // Fertilizer Marketplace
     fertilizerMarketplace: 'ఎరువుల మార్కెట్‌ప్లేస్',
@@ -184,6 +223,13 @@ export const translations = {
     perCubicYard: 'ప్రతి క్యూబిక్ యార్డ్‌కు',
     perDevice: 'ప్రతి పరికరానికి',
     perKit: 'ప్రతి కిట్‌కు (100 చ.అ. కవర్ చేస్తుంది)',
+    
+    // Language Settings
+    languageSettings: 'భాష సెట్టింగులు',
+    languageSettingsDesc: 'మీ ఇష్టమైన భాషను మార్చండి',
+    saveLanguage: 'భాషను సేవ్ చేయండి',
+    languageUpdated: 'భాష నవీకరించబడింది',
+    languageUpdatedDesc: 'మీ భాష ప్రాధాన్యత సేవ్ చేయబడింది.',
     
     // Difficulty levels
     easy: 'సులభం',
@@ -238,6 +284,7 @@ export const translations = {
     analysis: 'विश्लेषण',
     shop: 'दुकान',
     newAnalysis: 'नया विश्लेषण',
+    language: 'भाषा',
     newFarmAnalysis: 'नया फार्म विश्लेषण',
     startFresh: 'नए मापदंडों के साथ एक नया विश्लेषण शुरू करें',
     
@@ -258,6 +305,21 @@ export const translations = {
     effectiveness: 'प्रभावशीलता',
     fertilizerEffectiveness: 'उर्वरक प्रभावशीलता बनाम लागत',
     tons: 'टन/एकड़',
+    
+    // Crops
+    rice: 'चावल',
+    wheat: 'गेहूं',
+    sugarcane: 'गन्ना',
+    
+    // Fertilizers
+    organicCompost: 'जैविक खाद',
+    npk: 'NPK 10-10-10',
+    urea: 'यूरिया',
+    premiumOrganicCompost: 'प्रीमियम जैविक खाद',
+    
+    // Products
+    digitalSoilPhTester: 'डिजिटल मिट्टी pH टेस्टर',
+    dripIrrigationStarterKit: 'ड्रिप सिंचाई स्टार्टर किट',
     
     // Fertilizer Marketplace
     fertilizerMarketplace: 'उर्वरक बाज़ार',
@@ -286,6 +348,13 @@ export const translations = {
     perDevice: 'प्रति डिवाइस',
     perKit: 'प्रति किट (100 वर्ग फीट कवर करता है)',
     
+    // Language Settings
+    languageSettings: 'भाषा सेटिंग्स',
+    languageSettingsDesc: 'अपनी पसंदीदा भाषा बदलें',
+    saveLanguage: 'भाषा सहेजें',
+    languageUpdated: 'भाषा अपडेट की गई',
+    languageUpdatedDesc: 'आपकी भाषा प्राथमिकता सहेज दी गई है।',
+    
     // Difficulty levels
     easy: 'आसान',
     medium: 'मध्यम',
@@ -309,4 +378,40 @@ export const translations = {
 
 export const getTranslation = (key: keyof typeof translations.en, language: Language) => {
   return translations[language][key] || translations.en[key];
+};
+
+// Helper function to get translated crop names
+export const getCropName = (cropName: string, language: Language): string => {
+  const cropMapping: Record<string, keyof typeof translations.en> = {
+    'Rice': 'rice',
+    'Wheat': 'wheat',
+    'Sugarcane': 'sugarcane'
+  };
+  
+  const key = cropMapping[cropName];
+  return key ? getTranslation(key, language) : cropName;
+};
+
+// Helper function to get translated fertilizer names
+export const getFertilizerName = (fertilizerName: string, language: Language): string => {
+  const fertilizerMapping: Record<string, keyof typeof translations.en> = {
+    'Organic Compost': 'organicCompost',
+    'NPK 10-10-10': 'npk',
+    'Urea': 'urea',
+    'Premium Organic Compost': 'premiumOrganicCompost'
+  };
+  
+  const key = fertilizerMapping[fertilizerName];
+  return key ? getTranslation(key, language) : fertilizerName;
+};
+
+// Helper function to get translated product names
+export const getProductName = (productName: string, language: Language): string => {
+  const productMapping: Record<string, keyof typeof translations.en> = {
+    'Digital Soil pH Tester': 'digitalSoilPhTester',
+    'Drip Irrigation Starter Kit': 'dripIrrigationStarterKit'
+  };
+  
+  const key = productMapping[productName];
+  return key ? getTranslation(key, language) : productName;
 };
