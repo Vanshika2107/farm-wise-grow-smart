@@ -3,9 +3,11 @@ import { useState } from 'react';
 import FarmInputForm from '@/components/FarmInputForm';
 import RecommendationDashboard from '@/components/RecommendationDashboard';
 import FertilizerMarketplace from '@/components/FertilizerMarketplace';
+import LanguageSelector from '@/components/LanguageSelector';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Sprout, ShoppingCart, BarChart3 } from 'lucide-react';
+import { Language, getTranslation } from '@/utils/translations';
 
 export interface FarmData {
   soilType: string;
@@ -35,10 +37,15 @@ export interface Recommendation {
 }
 
 const Index = () => {
+  const [language, setLanguage] = useState<Language | null>(null);
   const [farmData, setFarmData] = useState<FarmData | null>(null);
   const [recommendations, setRecommendations] = useState<Recommendation | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [cartItems, setCartItems] = useState<Array<{id: string, name: string, price: number, quantity: number}>>([]);
+
+  const handleLanguageSelect = (selectedLanguage: Language) => {
+    setLanguage(selectedLanguage);
+  };
 
   const handleFormSubmit = async (data: FarmData) => {
     setIsLoading(true);
@@ -88,16 +95,27 @@ const Index = () => {
     }
   };
 
+  // Show language selector if no language is selected
+  if (!language) {
+    return <LanguageSelector onLanguageSelect={handleLanguageSelect} />;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <header className="bg-white shadow-sm border-b-2 border-green-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center gap-3">
             <Sprout className="h-8 w-8 text-green-600" />
-            <h1 className="text-3xl font-bold text-gray-800">FarmWise</h1>
-            <span className="text-lg text-green-600 font-medium">Grow Smart</span>
+            <h1 className="text-3xl font-bold text-gray-800">
+              {getTranslation('appName', language)}
+            </h1>
+            <span className="text-lg text-green-600 font-medium">
+              {getTranslation('tagline', language)}
+            </span>
           </div>
-          <p className="text-gray-600 mt-2">AI-powered farming recommendations for better yields and sustainability</p>
+          <p className="text-gray-600 mt-2">
+            {getTranslation('description', language)}
+          </p>
         </div>
       </header>
 
@@ -106,10 +124,14 @@ const Index = () => {
           <div className="max-w-2xl mx-auto">
             <Card className="p-8 shadow-lg">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Tell us about your farm</h2>
-                <p className="text-gray-600">We'll analyze your conditions and recommend the best crops and fertilizers</p>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                  {getTranslation('tellUsAboutFarm', language)}
+                </h2>
+                <p className="text-gray-600">
+                  {getTranslation('analyzeConditions', language)}
+                </p>
               </div>
-              <FarmInputForm onSubmit={handleFormSubmit} isLoading={isLoading} />
+              <FarmInputForm onSubmit={handleFormSubmit} isLoading={isLoading} language={language} />
             </Card>
           </div>
         ) : (
@@ -117,15 +139,15 @@ const Index = () => {
             <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
               <TabsTrigger value="recommendations" className="flex items-center gap-2">
                 <BarChart3 className="h-4 w-4" />
-                Analysis
+                {getTranslation('analysis', language)}
               </TabsTrigger>
               <TabsTrigger value="marketplace" className="flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4" />
-                Shop ({cartItems.length})
+                {getTranslation('shop', language)} ({cartItems.length})
               </TabsTrigger>
               <TabsTrigger value="new-analysis" className="flex items-center gap-2">
                 <Sprout className="h-4 w-4" />
-                New Analysis
+                {getTranslation('newAnalysis', language)}
               </TabsTrigger>
             </TabsList>
 
@@ -151,10 +173,14 @@ const Index = () => {
               <div className="max-w-2xl mx-auto">
                 <Card className="p-8 shadow-lg">
                   <div className="text-center mb-8">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">New Farm Analysis</h2>
-                    <p className="text-gray-600">Start a fresh analysis with new parameters</p>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                      {getTranslation('newFarmAnalysis', language)}
+                    </h2>
+                    <p className="text-gray-600">
+                      {getTranslation('startFresh', language)}
+                    </p>
                   </div>
-                  <FarmInputForm onSubmit={handleFormSubmit} isLoading={isLoading} />
+                  <FarmInputForm onSubmit={handleFormSubmit} isLoading={isLoading} language={language} />
                 </Card>
               </div>
             </TabsContent>

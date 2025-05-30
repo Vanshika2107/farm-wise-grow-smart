@@ -7,13 +7,15 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FarmData } from '@/pages/Index';
 import { Sprout } from 'lucide-react';
+import { Language, getTranslation } from '@/utils/translations';
 
 interface FarmInputFormProps {
   onSubmit: (data: FarmData) => void;
   isLoading: boolean;
+  language: Language;
 }
 
-const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
+const FarmInputForm = ({ onSubmit, isLoading, language }: FarmInputFormProps) => {
   const [formData, setFormData] = useState<FarmData>({
     soilType: '',
     previousCrop: '',
@@ -56,10 +58,12 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="soilType" className="text-base font-medium">Soil Type</Label>
+          <Label htmlFor="soilType" className="text-base font-medium">
+            {getTranslation('soilType', language)}
+          </Label>
           <Select value={formData.soilType} onValueChange={(value) => setFormData({...formData, soilType: value})}>
             <SelectTrigger className="h-12">
-              <SelectValue placeholder="Select your soil type" />
+              <SelectValue placeholder={getTranslation('selectSoilType', language)} />
             </SelectTrigger>
             <SelectContent>
               {soilTypes.map(type => (
@@ -70,10 +74,12 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="previousCrop" className="text-base font-medium">Previous Crop</Label>
+          <Label htmlFor="previousCrop" className="text-base font-medium">
+            {getTranslation('previousCrop', language)}
+          </Label>
           <Select value={formData.previousCrop} onValueChange={(value) => setFormData({...formData, previousCrop: value})}>
             <SelectTrigger className="h-12">
-              <SelectValue placeholder="What did you grow last?" />
+              <SelectValue placeholder={getTranslation('whatDidYouGrow', language)} />
             </SelectTrigger>
             <SelectContent className="max-h-60">
               {cropTypes.map(crop => (
@@ -84,11 +90,13 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="budget" className="text-base font-medium">Budget for Inputs (₹)</Label>
+          <Label htmlFor="budget" className="text-base font-medium">
+            {getTranslation('budget', language)}
+          </Label>
           <Input
             id="budget"
             type="number"
-            placeholder="e.g. 50000"
+            placeholder={getTranslation('budgetPlaceholder', language)}
             className="h-12 text-base"
             value={formData.budget || ''}
             onChange={(e) => setFormData({...formData, budget: parseInt(e.target.value) || 0})}
@@ -96,10 +104,12 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="location" className="text-base font-medium">State</Label>
+          <Label htmlFor="location" className="text-base font-medium">
+            {getTranslation('state', language)}
+          </Label>
           <Select value={formData.location} onValueChange={(value) => setFormData({...formData, location: value})}>
             <SelectTrigger className="h-12">
-              <SelectValue placeholder="Select your state" />
+              <SelectValue placeholder={getTranslation('selectState', language)} />
             </SelectTrigger>
             <SelectContent className="max-h-60">
               {indianStates.map(state => (
@@ -110,10 +120,12 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="season" className="text-base font-medium">Growing Season</Label>
+          <Label htmlFor="season" className="text-base font-medium">
+            {getTranslation('growingSeason', language)}
+          </Label>
           <Select value={formData.season} onValueChange={(value) => setFormData({...formData, season: value})}>
             <SelectTrigger className="h-12">
-              <SelectValue placeholder="Select growing season" />
+              <SelectValue placeholder={getTranslation('selectSeason', language)} />
             </SelectTrigger>
             <SelectContent>
               {seasons.map(season => (
@@ -132,10 +144,10 @@ const FarmInputForm = ({ onSubmit, isLoading }: FarmInputFormProps) => {
         {isLoading ? (
           <div className="flex items-center gap-2">
             <Sprout className="h-5 w-5 animate-spin" />
-            Analyzing Farm Conditions...
+            {getTranslation('analyzing', language)}
           </div>
         ) : (
-          'Get Smart Recommendations'
+          getTranslation('getRecommendations', language)
         )}
       </Button>
     </form>
