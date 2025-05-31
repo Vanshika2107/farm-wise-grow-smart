@@ -1,10 +1,11 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { FarmData, Recommendation } from '@/pages/Index';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, DollarSign, Leaf, Award } from 'lucide-react';
-import { Language, getTranslation, getCropName, getFertilizerName } from '@/utils/translations';
+import { Language, getTranslation, getCropName, getFertilizerName, getSoilTypeName, getSeasonName } from '@/utils/translations';
 
 interface RecommendationDashboardProps {
   recommendations: Recommendation;
@@ -56,11 +57,11 @@ const RecommendationDashboard = ({ recommendations, farmData, language }: Recomm
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
             <div>
               <p className="text-green-100">{getTranslation('soilType', language)}</p>
-              <p className="font-bold text-lg">{farmData.soilType}</p>
+              <p className="font-bold text-lg">{getSoilTypeName(farmData.soilType, language)}</p>
             </div>
             <div>
               <p className="text-green-100">{getTranslation('previousCrop', language)}</p>
-              <p className="font-bold text-lg">{farmData.previousCrop}</p>
+              <p className="font-bold text-lg">{getCropName(farmData.previousCrop, language)}</p>
             </div>
             <div>
               <p className="text-green-100">{getTranslation('budget', language)}</p>
@@ -72,7 +73,7 @@ const RecommendationDashboard = ({ recommendations, farmData, language }: Recomm
             </div>
             <div>
               <p className="text-green-100">{getTranslation('growingSeason', language)}</p>
-              <p className="font-bold text-lg">{farmData.season}</p>
+              <p className="font-bold text-lg">{getSeasonName(farmData.season, language)}</p>
             </div>
           </div>
         </CardContent>
@@ -245,8 +246,23 @@ const RecommendationDashboard = ({ recommendations, farmData, language }: Recomm
           </div>
         </CardContent>
       </Card>
+
+      {/* Data Sources Footer */}
+      <Card className="bg-gray-50">
+        <CardContent className="p-4">
+          <p className="text-sm text-gray-600 text-center">
+            {getTranslation('dataSource', language)}
+          </p>
+          <p className="text-sm text-blue-600 text-center mt-2">
+            <a href={getTranslation('websiteUrl', language)} target="_blank" rel="noopener noreferrer">
+              {getTranslation('websiteUrl', language)}
+            </a>
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 };
 
 export default RecommendationDashboard;
+

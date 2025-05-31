@@ -12,7 +12,7 @@ export const translations = {
     continue: 'Continue',
     
     // Header
-    appName: 'FarmWise',
+    appName: 'AgriSense',
     tagline: 'Grow Smart',
     description: 'AI-powered farming recommendations for better yields and sustainability',
     
@@ -62,6 +62,40 @@ export const translations = {
     rice: 'Rice',
     wheat: 'Wheat',
     sugarcane: 'Sugarcane',
+    corn: 'Corn',
+    cotton: 'Cotton',
+    soybeans: 'Soybeans',
+    groundnut: 'Groundnut',
+    sunflower: 'Sunflower',
+    mustard: 'Mustard',
+    barley: 'Barley',
+    jowar: 'Jowar',
+    bajra: 'Bajra',
+    ragi: 'Ragi',
+    tomatoes: 'Tomatoes',
+    potatoes: 'Potatoes',
+    onions: 'Onions',
+    turmeric: 'Turmeric',
+    chili: 'Chili',
+    
+    // Soil Types
+    clay: 'Clay',
+    sandy: 'Sandy',
+    loamy: 'Loamy',
+    silty: 'Silty',
+    peaty: 'Peaty',
+    chalky: 'Chalky',
+    blackCotton: 'Black Cotton',
+    redSoil: 'Red Soil',
+    laterite: 'Laterite',
+    
+    // Seasons
+    spring: 'Spring',
+    summer: 'Summer',
+    monsoon: 'Monsoon (Kharif)',
+    postMonsoon: 'Post-Monsoon (Rabi)',
+    winter: 'Winter',
+    rainySeason: 'Rainy Season',
     
     // Fertilizers
     organicCompost: 'Organic Compost',
@@ -124,7 +158,11 @@ export const translations = {
     twoYearWarranty: '2 Year Warranty',
     easyInstall: 'Easy Install',
     timerIncluded: 'Timer Included',
-    adjustableFlow: 'Adjustable Flow'
+    adjustableFlow: 'Adjustable Flow',
+    
+    // Data Sources
+    dataSource: 'Data Sources: ICAR-Indian Institute of Rice Research, Ministry of Agriculture & Farmers Welfare, India Meteorological Department',
+    websiteUrl: 'https://your-agrisense-app.lovable.app'
   },
   te: {
     // Language Selection
@@ -136,7 +174,7 @@ export const translations = {
     continue: 'కొనసాగించు',
     
     // Header
-    appName: 'ఫార్మ్‌వైజ్',
+    appName: 'అగ్రిసెన్స్',
     tagline: 'తెలివిగా పండించండి',
     description: 'మెరుగైన దిగుబడి మరియు స్థిరత్వం కోసం AI-శక్తితో కూడిన వ్యవసాయ సిఫార్సులు',
     
@@ -186,6 +224,40 @@ export const translations = {
     rice: 'వరి',
     wheat: 'గోధుమలు',
     sugarcane: 'చెరకు',
+    corn: 'మొక్కజొన్న',
+    cotton: 'పత్తి',
+    soybeans: 'సోయాబీన్స్',
+    groundnut: 'వేరుశెనగ',
+    sunflower: 'పొద్దుతిరుగుడు',
+    mustard: 'ఆవాలు',
+    barley: 'బార్లీ',
+    jowar: 'జొన్న',
+    bajra: 'సజ్జ',
+    ragi: 'రాగి',
+    tomatoes: 'టమాటోలు',
+    potatoes: 'బంగాళాదుంపలు',
+    onions: 'ఉల్లిపాయలు',
+    turmeric: 'పసుపు',
+    chili: 'మిర్చి',
+    
+    // Soil Types
+    clay: 'మట్టి మట్టి',
+    sandy: 'ఇసుక మట్టి',
+    loamy: 'లోమీ మట్టి',
+    silty: 'సిల్టీ మట్టి',
+    peaty: 'పీట్ మట్టి',
+    chalky: 'సుణ్ణపు మట్టి',
+    blackCotton: 'నల్ల పత్తి మట్టి',
+    redSoil: 'ఎర్రమట్టి',
+    laterite: 'లేటరైట్ మట్టి',
+    
+    // Seasons
+    spring: 'వసంతకాలం',
+    summer: 'వేసవికాలం',
+    monsoon: 'వర్షాకాలం (ఖరీఫ్)',
+    postMonsoon: 'వర్షానంతర (రబీ)',
+    winter: 'చలికాలం',
+    rainySeason: 'వర్షాకాలం',
     
     // Fertilizers
     organicCompost: 'సేంద్రీయ కంపోస్ట్',
@@ -248,7 +320,11 @@ export const translations = {
     twoYearWarranty: '2 సంవత్సరాల వారంటీ',
     easyInstall: 'సులభ ఇన్‌స్టాల్',
     timerIncluded: 'టైమర్ చేర్చబడింది',
-    adjustableFlow: 'సర్దుబాటు ప్రవాహం'
+    adjustableFlow: 'సర్దుబాటు ప్రవాహం',
+    
+    // Data Sources
+    dataSource: 'డేటా మూలాలు: ICAR-ఇండియన్ ఇన్స్టిట్యూట్ ఆఫ్ రైస్ రీసెర్చ్, వ్యవసాయ మరియు రైతు సంక్షేమ మంత్రిత్వ శాఖ, భారత వాతావరణ శాఖ',
+    websiteUrl: 'https://your-agrisense-app.lovable.app'
   },
   hi: {
     // Language Selection
@@ -260,7 +336,7 @@ export const translations = {
     continue: 'जारी रखें',
     
     // Header
-    appName: 'फार्मवाइज',
+    appName: 'एग्रीसेंस',
     tagline: 'स्मार्ट तरीके से उगाएं',
     description: 'बेहतर पैदावार और स्थिरता के लिए AI-संचालित खेती की सिफारिशें',
     
@@ -310,6 +386,40 @@ export const translations = {
     rice: 'चावल',
     wheat: 'गेहूं',
     sugarcane: 'गन्ना',
+    corn: 'मक्का',
+    cotton: 'कपास',
+    soybeans: 'सोयाबीन',
+    groundnut: 'मूंगफली',
+    sunflower: 'सूरजमुखी',
+    mustard: 'सरसों',
+    barley: 'जौ',
+    jowar: 'ज्वार',
+    bajra: 'बाजरा',
+    ragi: 'रागी',
+    tomatoes: 'टमाटर',
+    potatoes: 'आलू',
+    onions: 'प्याज',
+    turmeric: 'हल्दी',
+    chili: 'मिर्च',
+    
+    // Soil Types
+    clay: 'चिकनी मिट्टी',
+    sandy: 'रेतीली मिट्टी',
+    loamy: 'दोमट मिट्टी',
+    silty: 'गाद मिट्टी',
+    peaty: 'पीट मिट्टी',
+    chalky: 'चूनाप्रधान मिट्टी',
+    blackCotton: 'काली कपास मिट्टी',
+    redSoil: 'लाल मिट्टी',
+    laterite: 'लेटराइट मिट्टी',
+    
+    // Seasons
+    spring: 'वसंत',
+    summer: 'गर्मी',
+    monsoon: 'मानसून (खरीफ)',
+    postMonsoon: 'मानसून के बाद (रबी)',
+    winter: 'सर्दी',
+    rainySeason: 'बारिश का मौसम',
     
     // Fertilizers
     organicCompost: 'जैविक खाद',
@@ -372,7 +482,11 @@ export const translations = {
     twoYearWarranty: '2 साल की वारंटी',
     easyInstall: 'आसान इंस्टॉल',
     timerIncluded: 'टाइमर शामिल',
-    adjustableFlow: 'समायोज्य प्रवाह'
+    adjustableFlow: 'समायोज्य प्रवाह',
+    
+    // Data Sources
+    dataSource: 'डेटा स्रोत: ICAR-भारतीय चावल अनुसंधान संस्थान, कृषि और किसान कल्याण मंत्रालय, भारत मौसम विज्ञान विभाग',
+    websiteUrl: 'https://your-agrisense-app.lovable.app'
   }
 };
 
@@ -385,7 +499,22 @@ export const getCropName = (cropName: string, language: Language): string => {
   const cropMapping: Record<string, keyof typeof translations.en> = {
     'Rice': 'rice',
     'Wheat': 'wheat',
-    'Sugarcane': 'sugarcane'
+    'Sugarcane': 'sugarcane',
+    'Corn': 'corn',
+    'Cotton': 'cotton',
+    'Soybeans': 'soybeans',
+    'Groundnut': 'groundnut',
+    'Sunflower': 'sunflower',
+    'Mustard': 'mustard',
+    'Barley': 'barley',
+    'Jowar': 'jowar',
+    'Bajra': 'bajra',
+    'Ragi': 'ragi',
+    'Tomatoes': 'tomatoes',
+    'Potatoes': 'potatoes',
+    'Onions': 'onions',
+    'Turmeric': 'turmeric',
+    'Chili': 'chili'
   };
   
   const key = cropMapping[cropName];
@@ -415,3 +544,37 @@ export const getProductName = (productName: string, language: Language): string 
   const key = productMapping[productName];
   return key ? getTranslation(key, language) : productName;
 };
+
+// Helper function to get translated soil types
+export const getSoilTypeName = (soilType: string, language: Language): string => {
+  const soilMapping: Record<string, keyof typeof translations.en> = {
+    'Clay': 'clay',
+    'Sandy': 'sandy',
+    'Loamy': 'loamy',
+    'Silty': 'silty',
+    'Peaty': 'peaty',
+    'Chalky': 'chalky',
+    'Black Cotton': 'blackCotton',
+    'Red Soil': 'redSoil',
+    'Laterite': 'laterite'
+  };
+  
+  const key = soilMapping[soilType];
+  return key ? getTranslation(key, language) : soilType;
+};
+
+// Helper function to get translated season names
+export const getSeasonName = (season: string, language: Language): string => {
+  const seasonMapping: Record<string, keyof typeof translations.en> = {
+    'Spring': 'spring',
+    'Summer': 'summer',
+    'Monsoon (Kharif)': 'monsoon',
+    'Post-Monsoon (Rabi)': 'postMonsoon',
+    'Winter': 'winter',
+    'Rainy Season': 'rainySeason'
+  };
+  
+  const key = seasonMapping[season];
+  return key ? getTranslation(key, language) : season;
+};
+

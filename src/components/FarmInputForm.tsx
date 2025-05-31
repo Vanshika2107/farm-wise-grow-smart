@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FarmData } from '@/pages/Index';
 import { Sprout } from 'lucide-react';
-import { Language, getTranslation } from '@/utils/translations';
+import { Language, getTranslation, getCropName, getSoilTypeName, getSeasonName } from '@/utils/translations';
 
 interface FarmInputFormProps {
   onSubmit: (data: FarmData) => void;
@@ -67,7 +67,9 @@ const FarmInputForm = ({ onSubmit, isLoading, language }: FarmInputFormProps) =>
             </SelectTrigger>
             <SelectContent>
               {soilTypes.map(type => (
-                <SelectItem key={type} value={type}>{type}</SelectItem>
+                <SelectItem key={type} value={type}>
+                  {getSoilTypeName(type, language)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -83,7 +85,9 @@ const FarmInputForm = ({ onSubmit, isLoading, language }: FarmInputFormProps) =>
             </SelectTrigger>
             <SelectContent className="max-h-60">
               {cropTypes.map(crop => (
-                <SelectItem key={crop} value={crop}>{crop}</SelectItem>
+                <SelectItem key={crop} value={crop}>
+                  {getCropName(crop, language)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -129,7 +133,9 @@ const FarmInputForm = ({ onSubmit, isLoading, language }: FarmInputFormProps) =>
             </SelectTrigger>
             <SelectContent>
               {seasons.map(season => (
-                <SelectItem key={season} value={season}>{season}</SelectItem>
+                <SelectItem key={season} value={season}>
+                  {getSeasonName(season, language)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -155,3 +161,4 @@ const FarmInputForm = ({ onSubmit, isLoading, language }: FarmInputFormProps) =>
 };
 
 export default FarmInputForm;
+
