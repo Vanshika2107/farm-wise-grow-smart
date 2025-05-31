@@ -162,7 +162,7 @@ export const translations = {
     
     // Data Sources
     dataSource: 'Data Sources: ICAR-Indian Institute of Rice Research, Ministry of Agriculture & Farmers Welfare, India Meteorological Department',
-    websiteUrl: 'https://your-agrisense-app.lovable.app'
+    websiteUrl: 'https://agrisense.com'
   },
   te: {
     // Language Selection
@@ -324,7 +324,7 @@ export const translations = {
     
     // Data Sources
     dataSource: 'డేటా మూలాలు: ICAR-ఇండియన్ ఇన్స్టిట్యూట్ ఆఫ్ రైస్ రీసెర్చ్, వ్యవసాయ మరియు రైతు సంక్షేమ మంత్రిత్వ శాఖ, భారత వాతావరణ శాఖ',
-    websiteUrl: 'https://your-agrisense-app.lovable.app'
+    websiteUrl: 'https://agrisense.com'
   },
   hi: {
     // Language Selection
@@ -486,7 +486,7 @@ export const translations = {
     
     // Data Sources
     dataSource: 'डेटा स्रोत: ICAR-भारतीय चावल अनुसंधान संस्थान, कृषि और किसान कल्याण मंत्रालय, भारत मौसम विज्ञान विभाग',
-    websiteUrl: 'https://your-agrisense-app.lovable.app'
+    websiteUrl: 'https://agrisense.com'
   }
 };
 
